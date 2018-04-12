@@ -3,3 +3,9 @@ name = "meetup-find-events-rss"
 version = "0.0.1"
 
 [dependencies]
+meetup = { path = "meetup" }
+
+[workspace]
+members = [
+	"meetup",
+]
