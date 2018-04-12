@@ -14,7 +14,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let mut opts = Options::new();
-    opts.optopt(
+    opts.reqopt(
         "",
         "meetup-api-token",
         "Meetup.com API token (required)",
@@ -34,4 +34,8 @@ fn main() {
         print_usage(opts);
         return;
     }
+
+    let meetup_token = opt_matches.opt_str("meetup-api-token").unwrap();
+
+    println!("{}", meetup_token);
 }
