@@ -3,3 +3,4 @@ name = "meetup"
 version = "0.0.1"
 
 [dependencies]
+serde_json = "1.0"
