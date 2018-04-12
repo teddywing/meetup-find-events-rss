@@ -1,4 +1,9 @@
 [[package]]
+name = "getopts"
+version = "0.2.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
 name = "meetup"
 version = "0.0.1"
 
@@ -6,6 +11,9 @@ version = "0.0.1"
 name = "meetup-find-events-rss"
 version = "0.0.1"
 dependencies = [
+ "getopts 0.2.17 (registry+https://github.com/rust-lang/crates.io-index)",
  "meetup 0.0.1",
 ]
 
+[metadata]
+"checksum getopts 0.2.17 (registry+https://github.com/rust-lang/crates.io-index)" = "b900c08c1939860ce8b54dc6a89e26e00c04c380fd0e09796799bd7f12861e05"

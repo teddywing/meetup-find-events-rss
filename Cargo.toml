@@ -3,6 +3,8 @@ name = "meetup-find-events-rss"
 version = "0.0.1"
 
 [dependencies]
+getopts = "0.2"
+
 meetup = { path = "meetup" }
 
 [workspace]
