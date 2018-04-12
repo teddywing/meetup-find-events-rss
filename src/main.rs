@@ -25,7 +25,7 @@ fn main() {
     let opt_matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
         Err(f) => {
-            eprint!("meetup-find-events-rss: error: {}", f.to_string());
+            eprintln!("meetup-find-events-rss: error: {}", f.to_string());
             exit(1);
         },
     };
