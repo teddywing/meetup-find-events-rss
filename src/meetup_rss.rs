@@ -26,7 +26,7 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel, String> {
 /// Writes the channel to standard output.
 pub fn write(channel: Channel) {
     let stdout = io::stdout();
-    let mut handle = stdout.lock();
+    let handle = stdout.lock();
 
     channel.write_to(handle);
 }
