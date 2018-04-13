@@ -1,5 +1,7 @@
 use rss::{Channel, ChannelBuilder, Item};
 
+use std::io;
+
 use meetup::event::Event;
 
 pub fn generate(events: &Vec<Event>) -> Result<Channel, String> {
@@ -19,6 +21,14 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel, String> {
             .items(items)
             .build()?
     )
+}
+
+/// Writes the channel to standard output.
+pub fn write(channel: Channel) {
+    let stdout = io::stdout();
+    let mut handle = stdout.lock();
+
+    channel.write_to(handle);
 }
 
 
