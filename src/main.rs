@@ -1,9 +1,13 @@
 extern crate getopts;
 
+extern crate meetup_find_events_rss;
+
 use getopts::Options;
 
 use std::env;
 use std::process::exit;
+
+use meetup_find_events_rss::build_rss;
 
 fn print_usage(opts: Options) {
     let brief = "usage: meetup-find-events-rss";
@@ -37,5 +41,5 @@ fn main() {
 
     let meetup_token = opt_matches.opt_str("meetup-api-token").unwrap();
 
-    println!("{}", meetup_token);
+    build_rss::write_feed().unwrap();
 }
