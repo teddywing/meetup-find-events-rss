@@ -1,4 +1,7 @@
-#[derive(Debug, PartialEq)]
+use serde_json;
+
+
+#[derive(Debug, Deserialize, PartialEq)]
 pub struct Event {
     pub name: String,
     pub description: String,
@@ -13,8 +16,11 @@ pub struct Event {
 // }
 
 
-fn parse_json(json: String) -> Vec<Event> {
-    Vec::new()
+fn parse_json(json: String) -> Result<Vec<Event>, serde_json::Error> {
+    let parsed: serde_json::Value = serde_json::from_str(json.as_ref())?;
+    let events: Vec<Event> = serde_json::from_value(parsed["events"].clone())?;
+
+    Ok(events)
 }
 
 
@@ -27,7 +33,7 @@ mod tests {
         let events = parse_json(
             include_str!("../testdata/meetup--find-upcoming_events.json")
                 .to_owned()
-        );
+        ).unwrap();
 
         assert_eq!(
             events,
