@@ -4,6 +4,7 @@ version = "0.0.1"
 
 [dependencies]
 getopts = "0.2"
+rss = "1.4"
 
 meetup = { path = "meetup" }
 
