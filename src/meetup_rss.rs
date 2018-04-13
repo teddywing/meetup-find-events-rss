@@ -1,4 +1,4 @@
-use rss::{Channel, ChannelBuilder, Item};
+use rss::{self, Channel, ChannelBuilder, Item};
 
 use std::io;
 
@@ -24,11 +24,13 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel, String> {
 }
 
 /// Writes the channel to standard output.
-pub fn write(channel: Channel) {
+pub fn write(channel: Channel) -> Result<(), rss::Error> {
     let stdout = io::stdout();
     let handle = stdout.lock();
 
-    channel.write_to(handle);
+    channel.write_to(handle)?;
+
+    Ok(())
 }
 
 

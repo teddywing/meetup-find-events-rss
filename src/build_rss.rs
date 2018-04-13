@@ -8,7 +8,7 @@ use meetup_rss;
 pub fn write_feed() -> Result<(), Box<Error>> {
     let events = event::find_upcoming_events()?;
     let channel = meetup_rss::generate(&events)?;
-    meetup_rss::write(channel);
+    meetup_rss::write(channel)?;
 
     Ok(())
 }
