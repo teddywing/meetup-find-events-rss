@@ -45,6 +45,13 @@ mod tests {
                     local_date: "2018-04-17".to_owned(),
                     local_time: "18:30".to_owned(),
                 },
+                Event {
+                    name: "PyCon Rehearsal Night #1".to_owned(),
+                    description: "<p>.</p> ".to_owned(),
+                    link: "https://www.meetup.com/bostonpython/events/247552529/".to_owned(),
+                    local_date: "2018-04-25".to_owned(),
+                    local_time: "19:00".to_owned(),
+                },
             ]
         );
     }
