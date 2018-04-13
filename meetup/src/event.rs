@@ -12,8 +12,11 @@ pub struct Event {
 }
 
 
-// pub fn find_upcoming_events() -> Vec<Event> {
-// }
+pub fn find_upcoming_events() -> Result<Vec<Event>, serde_json::Error> {
+    let json = include_str!("../testdata/meetup--find-upcoming_events.json").to_owned();
+
+    parse_json(json)
+}
 
 
 fn parse_json(json: String) -> Result<Vec<Event>, serde_json::Error> {
