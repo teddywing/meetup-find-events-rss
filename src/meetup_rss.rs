@@ -17,8 +17,8 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel> {
 
     Ok(
         ChannelBuilder::default()
-            .title("Test")
-            .description("Description")
+            .title("Meetup Events")
+            .description("Upcoming meetups")
             .items(items)
             .build()?
     )
