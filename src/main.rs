@@ -41,5 +41,12 @@ fn main() {
 
     let meetup_token = opt_matches.opt_str("meetup-api-token").unwrap();
 
-    build_rss::write_feed().unwrap();
+    build_rss::write_feed(
+        meetup_token,
+        "48".to_owned(),
+        "2".to_owned(),
+        "2018-04-14".to_owned(),
+        None,
+        None,
+    ).unwrap();
 }
