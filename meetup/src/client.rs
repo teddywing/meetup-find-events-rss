@@ -1,8 +1,7 @@
 use reqwest;
 use serde_json;
 
-use std::error::Error;
-
+use errors::*;
 use event::Event;
 
 const MEETUP_BASE_URL: &'static str = "https://api.meetup.com";
@@ -23,7 +22,7 @@ impl Client {
         end_date_range: String,
         radius: Option<String>,
         page: Option<String>,
-    ) -> Result<Vec<Event>, Box<Error>> {
+    ) -> Result<Vec<Event>> {
         let mut params = vec![
             ("key", self.token.clone()),
             ("lat", latitude),
@@ -52,7 +51,7 @@ impl Client {
 }
 
 
-fn parse_json(json: String) -> Result<Vec<Event>, serde_json::Error> {
+fn parse_json(json: String) -> Result<Vec<Event>> {
     let parsed: serde_json::Value = serde_json::from_str(json.as_ref())?;
     let events: Vec<Event> = serde_json::from_value(parsed["events"].clone())?;
 
