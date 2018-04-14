@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate error_chain;
 extern crate getopts;
 
 extern crate meetup_find_events_rss;
@@ -9,12 +11,27 @@ use std::process::exit;
 
 use meetup_find_events_rss::build_rss;
 
+mod errors {
+    error_chain! {}
+}
+
+use errors::*;
+
+fn main() {
+    if let Err(ref e) = run() {
+        use error_chain::ChainedError;
+
+        eprintln!("{}", e.display_chain());
+        exit(1);
+    }
+}
+
 fn print_usage(opts: Options) {
     let brief = "usage: meetup-find-events-rss";
     print!("{}", opts.usage(&brief));
 }
 
-fn main() {
+fn run() -> Result<()> {
     let args: Vec<String> = env::args().collect();
 
     let mut opts = Options::new();
@@ -36,7 +53,8 @@ fn main() {
 
     if opt_matches.opt_present("h") {
         print_usage(opts);
-        return;
+
+        return Ok(());
     }
 
     let meetup_token = opt_matches.opt_str("meetup-api-token").unwrap();
@@ -48,5 +66,7 @@ fn main() {
         "2018-04-14".to_owned(),
         None,
         None,
-    ).unwrap();
+    ).chain_err(|| "could not write RSS feed.")?;
+
+    Ok(())
 }
