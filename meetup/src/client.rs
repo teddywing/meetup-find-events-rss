@@ -24,9 +24,8 @@ impl Client {
         radius: Option<String>,
         page: Option<String>,
     ) -> Result<Vec<Event>, Box<Error>> {
-        let json = include_str!("../testdata/meetup--find-upcoming_events.json").to_owned();
-
         let mut params = vec![
+            ("key", self.token.clone()),
             ("lat", latitude),
             ("lon", longitude),
             ("end_date_range", end_date_range),
@@ -42,11 +41,13 @@ impl Client {
         }
 
         let client = reqwest::Client::new();
-        client.get(&format!("{}{}", MEETUP_BASE_URL, "/find/upcoming_events"))
+        let response_text = client
+            .get(&format!("{}{}", MEETUP_BASE_URL, "/find/upcoming_events"))
             .query(&params)
-            .send()?;
+            .send()?
+            .text()?;
 
-        Ok(parse_json(json)?)
+        Ok(parse_json(response_text)?)
     }
 }
 
