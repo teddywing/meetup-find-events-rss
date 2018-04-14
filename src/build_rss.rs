@@ -1,4 +1,4 @@
-use std::error::Error;
+use errors::*;
 
 use meetup::client;
 use meetup_rss;
@@ -12,7 +12,7 @@ pub fn write_feed(
     end_date_range: String,
     radius: Option<String>,
     page: Option<String>,
-) -> Result<(), Box<Error>> {
+) -> Result<()> {
     let client = client::Client::new(token);
     let events = client.find_upcoming_events(
         latitude,

@@ -8,5 +8,8 @@ extern crate serde_derive;
 extern crate serde_json;
 
 pub mod client;
-pub mod errors;
 pub mod event;
+
+mod errors;
+
+pub use errors::Error;

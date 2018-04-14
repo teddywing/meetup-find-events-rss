@@ -1,10 +1,11 @@
-use rss::{self, Channel, ChannelBuilder, Item};
+use rss::{Channel, ChannelBuilder, Item};
 
 use std::io;
 
+use errors::*;
 use meetup::event::Event;
 
-pub fn generate(events: &Vec<Event>) -> Result<Channel, String> {
+pub fn generate(events: &Vec<Event>) -> Result<Channel> {
     let items: Vec<Item> = events.into_iter().map(|event| {
         let mut item = Item::default();
         item.set_title(event.name.clone());
@@ -24,7 +25,7 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel, String> {
 }
 
 /// Writes the channel to standard output.
-pub fn write(channel: Channel) -> Result<(), rss::Error> {
+pub fn write(channel: Channel) -> Result<()> {
     let stdout = io::stdout();
     let handle = stdout.lock();
 
