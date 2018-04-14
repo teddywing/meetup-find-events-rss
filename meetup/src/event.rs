@@ -1,10 +1,10 @@
 #[derive(Debug, Deserialize, PartialEq)]
 pub struct Event {
     pub name: String,
-    pub description: String,
+    pub description: Option<String>,
     pub link: String,
-    pub local_date: String,
-    pub local_time: String,
+    pub local_date: Option<String>,
+    pub local_time: Option<String>,
     // venue struct
 }
 
