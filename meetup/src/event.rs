@@ -1,4 +1,7 @@
+use reqwest;
 use serde_json;
+
+use std::error::Error;
 
 
 #[derive(Debug, Deserialize, PartialEq)]
@@ -12,10 +15,44 @@ pub struct Event {
 }
 
 
-pub fn find_upcoming_events() -> Result<Vec<Event>, serde_json::Error> {
+const MEETUP_BASE_URL: &'static str = "https://api.meetup.com";
+
+// lat
+// lon
+// order 'time'
+// [radius]
+// end_date_range
+// [page]
+pub fn find_upcoming_events(
+    latitude: String,
+    longitude: String,
+    end_date_range: String,
+    radius: Option<String>,
+    page: Option<String>,
+) -> Result<Vec<Event>, Box<Error>> {
     let json = include_str!("../testdata/meetup--find-upcoming_events.json").to_owned();
 
-    parse_json(json)
+    let mut params = vec![
+        ("lat", latitude),
+        ("lon", longitude),
+        ("end_date_range", end_date_range),
+        ("order", "time".to_owned()),
+    ];
+
+    if let Some(r) = radius {
+        params.push(("radius", r))
+    }
+
+    if let Some(p) = page {
+        params.push(("page", p))
+    }
+
+    let client = reqwest::Client::new();
+    client.get(&format!("{}{}", MEETUP_BASE_URL, "/find/upcoming_events"))
+        .query(&params)
+        .send()?;
+
+    Ok(parse_json(json)?)
 }
 
 
