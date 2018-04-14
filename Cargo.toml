@@ -3,6 +3,7 @@ name = "meetup-find-events-rss"
 version = "0.0.1"
 
 [dependencies]
+error-chain = "0.11"
 getopts = "0.2"
 rss = "1.4"
 
