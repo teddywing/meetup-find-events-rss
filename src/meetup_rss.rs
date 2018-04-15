@@ -44,10 +44,10 @@ mod tests {
         let events = vec![
             Event {
                 name: "Summer Sun Celebration".to_owned(),
-                description: "Description".to_owned(),
+                description: Some("Description".to_owned()),
                 link: "http://example.com".to_owned(),
-                local_date: "2018-04-13".to_owned(),
-                local_time: "18:30".to_owned(),
+                local_date: Some("2018-04-13".to_owned()),
+                local_time: Some("18:30".to_owned()),
             }
         ];
         let event = &events[0];
@@ -58,6 +58,9 @@ mod tests {
 
         assert_eq!(event.name, item.title().unwrap());
         assert_eq!(event.link, item.link().unwrap());
-        assert_eq!(event.description, item.description().unwrap());
+        assert_eq!(
+            event.description.clone().unwrap(),
+            item.description().unwrap()
+        );
     }
 }
