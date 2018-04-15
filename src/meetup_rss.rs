@@ -11,10 +11,12 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel> {
         item.set_title(event.name.clone());
         item.set_link(event.link.clone());
         item.set_description(
-            format!(
-                "{}\n\n{}",
-                description_header(&event),
-                event.description.clone().unwrap_or("".to_owned()),
+            join_nonempty(
+                &[
+                    description_header(&event),
+                    event.description.clone().unwrap_or("".to_owned()),
+                ],
+                "\n\n",
             )
         );
 
