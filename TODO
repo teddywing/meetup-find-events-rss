@@ -1,0 +1,13 @@
+TODO
+
+2018.04.15:
+v Fix feed title/metadata (2018.04.15)
+v User inputted location and end date (2018.04.15)
+v Put date and time in RSS item fields (2018.04.15)
+v Add venue information (2018.04.15)
+
+- User inputted topics
+- Try to get as many events as possible for the given date range
+
+- Use event date & time as published date & time
+- Get a topic list with IDs
