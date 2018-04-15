@@ -41,6 +41,24 @@ fn run() -> Result<()> {
         "Meetup.com API token (required)",
         "TOKEN"
     );
+    opts.reqopt(
+        "",
+        "latitude",
+        "Origin latitude (required)",
+        "LATITUDE",
+    );
+    opts.reqopt(
+        "",
+        "longitude",
+        "Origin longitude (required)",
+        "LONGITUDE",
+    );
+    opts.reqopt(
+        "",
+        "end-date",
+        "Search for events from now until DATE (e.g. \"2018-01-31\") (required)",
+        "DATE",
+    );
     opts.optflag("h", "help", "print this help menu");
 
     let opt_matches = match opts.parse(&args[1..]) {
