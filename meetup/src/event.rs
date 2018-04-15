@@ -8,7 +8,7 @@ pub struct Event {
     pub venue: Option<Venue>,
 }
 
-#[derive(Debug, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Deserialize, PartialEq)]
 pub struct Venue {
     pub name: String,
     pub address_1: String,
