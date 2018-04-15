@@ -44,13 +44,6 @@ pub fn write(channel: Channel) -> Result<()> {
 /// Where: Passage, 99 Passage des Panoramas, Paris, France
 /// ```
 fn description_header(event: &Event) -> String {
-    // let when = if let Some(date) = event.local_date &&
-    //         Some(time) = event.local_time {
-    //     format!("When: {} {}", date, time)
-    // } else {
-    //     ""
-    // };
-
     let when = if event.local_date.is_some() &&
             event.local_time.is_some() {
         format!(
@@ -74,9 +67,6 @@ fn description_header(event: &Event) -> String {
         "".to_owned()
     };
 
-    // format!("{}\n{}", when, place)
-    // [when, place].join("\n")
-
     let header = when;
 
     let header = if !header.is_empty() && !place.is_empty() {
@@ -88,18 +78,6 @@ fn description_header(event: &Event) -> String {
     let header = format!("{}{}", header, place);
 
     header
-
-
-//     format!(
-//         "When: {} {}
-// Where: {}, {}, {}, {}",
-//         event.local_date,
-//         event.local_time,
-//         event.venue.name,
-//         event.venue.address_1,
-//         event.venue.city,
-//         event.venue.localized_country_name,
-//     )
 }
 
 
