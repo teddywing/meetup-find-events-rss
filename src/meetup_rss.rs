@@ -10,7 +10,13 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel> {
         let mut item = Item::default();
         item.set_title(event.name.clone());
         item.set_link(event.link.clone());
-        item.set_description(event.description.clone());
+        item.set_description(
+            format!(
+                "{}\n\n{}",
+                description_header(&event),
+                event.description.clone().unwrap_or("".to_owned()),
+            )
+        );
 
         item
     }).collect();
@@ -107,7 +113,12 @@ mod tests {
         assert_eq!(event.name, item.title().unwrap());
         assert_eq!(event.link, item.link().unwrap());
         assert_eq!(
-            event.description.clone().unwrap(),
+            format!(
+                "When: {} {}\n\n{}",
+                event.local_date.clone().unwrap(),
+                event.local_time.clone().unwrap(),
+                event.description.clone().unwrap(),
+            ),
             item.description().unwrap()
         );
     }
