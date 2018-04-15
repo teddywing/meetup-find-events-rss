@@ -35,6 +35,14 @@ pub fn write(channel: Channel) -> Result<()> {
 }
 
 
+/// Generates a string containing the date and venue of an `Event` for inclusion
+/// in the description field of an `rss::Item`.
+///
+/// Looks like:
+/// ``` text
+/// When: 2018-04-15 19:00
+/// Where: Passage, 99 Passage des Panoramas, Paris, France
+/// ```
 fn description_header(event: &Event) -> String {
     // let when = if let Some(date) = event.local_date &&
     //         Some(time) = event.local_time {
