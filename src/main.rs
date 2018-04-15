@@ -64,6 +64,13 @@ fn run() -> Result<()> {
     let opt_matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
         Err(f) => {
+            if args.contains(&"-h".to_owned()) ||
+                    args.contains(&"--help".to_owned()) {
+                print_usage(opts);
+
+                return Ok(());
+            }
+
             eprintln!("meetup-find-events-rss: error: {}", f.to_string());
             exit(1);
         },
