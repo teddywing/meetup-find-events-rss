@@ -73,17 +73,12 @@ fn description_header(event: &Event) -> String {
         "".to_owned()
     };
 
-    let header = when;
-
-    let header = if !header.is_empty() && !place.is_empty() {
-        format!("{}\n", header)
-    } else {
-        header
-    };
-
-    let header = format!("{}{}", header, place);
-
-    header
+    [when, place]
+        .iter()
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_owned())
+        .collect::<Vec<String>>()
+        .join("\n")
 }
 
 
