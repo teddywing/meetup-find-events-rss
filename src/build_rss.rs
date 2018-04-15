@@ -1,6 +1,6 @@
 use errors::*;
 
-use meetup::client;
+use meetup;
 use meetup_rss;
 
 /// Requests the Meetup API, generates an RSS feed from the resulting events,
@@ -13,7 +13,7 @@ pub fn write_feed(
     radius: Option<String>,
     page: Option<String>,
 ) -> Result<()> {
-    let client = client::Client::new(token);
+    let client = meetup::Client::new(token);
     let events = client.find_upcoming_events(
         latitude,
         longitude,
