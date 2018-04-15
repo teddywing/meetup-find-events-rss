@@ -83,12 +83,15 @@ fn run() -> Result<()> {
     }
 
     let meetup_token = opt_matches.opt_str("meetup-api-token").unwrap();
+    let latitude = opt_matches.opt_str("latitude").unwrap();
+    let longitude = opt_matches.opt_str("longitude").unwrap();
+    let end_date = opt_matches.opt_str("end-date").unwrap();
 
     build_rss::write_feed(
         meetup_token,
-        "48".to_owned(),
-        "2".to_owned(),
-        "2018-04-17".to_owned(),
+        latitude,
+        longitude,
+        end_date,
         None,
         None,
     ).chain_err(|| "could not write RSS feed.")?;
