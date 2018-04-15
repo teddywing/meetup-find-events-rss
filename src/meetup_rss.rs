@@ -11,12 +11,10 @@ pub fn generate(events: &Vec<Event>) -> Result<Channel> {
         item.set_title(event.name.clone());
         item.set_link(event.link.clone());
         item.set_description(
-            join_nonempty(
-                &[
-                    description_header(&event),
-                    event.description.clone().unwrap_or("".to_owned()),
-                ],
-                "\n\n",
+            format!(
+                "<p>{}</p>{}",
+                description_header(&event),
+                event.description.clone().unwrap_or("".to_owned()),
             )
         );
 
@@ -75,7 +73,7 @@ fn description_header(event: &Event) -> String {
         "".to_owned()
     };
 
-    join_nonempty(&[when, place], "\n")
+    join_nonempty(&[when, place], "<br />")
 }
 
 /// Joins a slice of `String`s with `separator`, filtering out empty strings.
@@ -116,7 +114,7 @@ mod tests {
         assert_eq!(event.link, item.link().unwrap());
         assert_eq!(
             format!(
-                "When: {} {}\n\n{}",
+                "<p>When: {} {}</p>{}",
                 event.local_date.clone().unwrap(),
                 event.local_time.clone().unwrap(),
                 event.description.clone().unwrap(),
@@ -144,8 +142,7 @@ mod tests {
         let header = description_header(&event);
 
         assert_eq!(
-            "When: 2018-04-15 19:00
-Where: Passage, 99 Passage des Panoramas, Paris, France",
+            "When: 2018-04-15 19:00<br />Where: Passage, 99 Passage des Panoramas, Paris, France",
             header
         );
     }
