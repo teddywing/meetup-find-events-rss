@@ -17,7 +17,7 @@ pub fn write_feed(
     let events = client.find_upcoming_events(
         latitude,
         longitude,
-        format!("{}T00:00:00", end_date),
+        format!("{}T23:59:59", end_date),
         radius,
         page
     )?;
