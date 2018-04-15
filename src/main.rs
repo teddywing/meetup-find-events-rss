@@ -63,7 +63,7 @@ fn run() -> Result<()> {
         meetup_token,
         "48".to_owned(),
         "2".to_owned(),
-        "2018-04-17T00:00:00".to_owned(),
+        "2018-04-17".to_owned(),
         None,
         None,
     ).chain_err(|| "could not write RSS feed.")?;

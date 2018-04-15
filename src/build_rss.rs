@@ -9,7 +9,7 @@ pub fn write_feed(
     token: String,
     latitude: String,
     longitude: String,
-    end_date_range: String,
+    end_date: String,
     radius: Option<String>,
     page: Option<String>,
 ) -> Result<()> {
@@ -17,7 +17,7 @@ pub fn write_feed(
     let events = client.find_upcoming_events(
         latitude,
         longitude,
-        end_date_range,
+        format!("{}T00:00:00", end_date),
         radius,
         page
     )?;
