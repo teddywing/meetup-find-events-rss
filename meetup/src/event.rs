@@ -15,13 +15,3 @@ pub struct Venue {
     pub city: String,
     pub localized_country_name: String,
 }
-
-
-
-// lat
-// lon
-// order 'time'
-// [radius]
-// end_date_range
-// [page]
-
