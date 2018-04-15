@@ -5,7 +5,15 @@ pub struct Event {
     pub link: String,
     pub local_date: Option<String>,
     pub local_time: Option<String>,
-    // venue struct
+    pub venue: Option<Venue>,
+}
+
+#[derive(Debug, Deserialize, PartialEq)]
+pub struct Venue {
+    pub name: String,
+    pub address_1: String,
+    pub city: String,
+    pub localized_country_name: String,
 }
 
 

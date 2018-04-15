@@ -62,6 +62,7 @@ fn parse_json(json: String) -> Result<Vec<Event>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use event::Venue;
 
     #[test]
     fn test_parse_json_parses_event_json() {
@@ -79,6 +80,12 @@ mod tests {
                     link: "https://www.meetup.com/Cambridge-Hackspace/events/249620800/".to_owned(),
                     local_date: Some("2018-04-17".to_owned()),
                     local_time: Some("18:30".to_owned()),
+                    venue: Some(Venue {
+                        name: "Cambridge Hackspace".to_owned(),
+                        address_1: "438 Somerville Avenue".to_owned(),
+                        city: "Somerville".to_owned(),
+                        localized_country_name: "USA".to_owned(),
+                    }),
                 },
                 Event {
                     name: "PyCon Rehearsal Night #1".to_owned(),
@@ -86,6 +93,12 @@ mod tests {
                     link: "https://www.meetup.com/bostonpython/events/247552529/".to_owned(),
                     local_date: Some("2018-04-25".to_owned()),
                     local_time: Some("19:00".to_owned()),
+                    venue: Some(Venue {
+                        name: "VMWare".to_owned(),
+                        address_1: "2 Ave de Lafayette".to_owned(),
+                        city: "Boston".to_owned(),
+                        localized_country_name: "USA".to_owned(),
+                    }),
                 },
             ]
         );

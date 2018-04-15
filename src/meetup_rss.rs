@@ -48,6 +48,7 @@ mod tests {
                 link: "http://example.com".to_owned(),
                 local_date: Some("2018-04-13".to_owned()),
                 local_time: Some("18:30".to_owned()),
+                venue: None,
             }
         ];
         let event = &events[0];
