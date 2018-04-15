@@ -73,12 +73,17 @@ fn description_header(event: &Event) -> String {
         "".to_owned()
     };
 
-    [when, place]
+    join_nonempty(&[when, place], "\n")
+}
+
+/// Joins a slice of `String`s with `separator`, filtering out empty strings.
+fn join_nonempty(strings: &[String], separator: &str) -> String {
+    strings
         .iter()
         .filter(|s| !s.is_empty())
         .map(|s| s.to_owned())
         .collect::<Vec<String>>()
-        .join("\n")
+        .join(separator)
 }
 
 
