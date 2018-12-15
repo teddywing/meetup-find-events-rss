@@ -28,7 +28,7 @@ A Meetup API token can be obtained from
 ## Example
 Here's a demonstration of the result of the above script in Newsboat.
 
-	echo '~/meetup-upcoming.xml' >> ~/.newsboat/urls
+	echo "file://$HOME/meetup-upcoming.xml" >> ~/.newsboat/urls
 
 [TODO demo gif]
 
