@@ -21,7 +21,8 @@ The following shell script generates a new feed and writes it to the
 		--end-date 2018-04-15 \
 		> ~/meetup-upcoming.xml
 
-A Meetup API token can be obtained from [TODO][2].
+A Meetup API token can be obtained from
+<https://secure.meetup.com/meetup_api/key/>.
 
 
 ## Example
@@ -33,7 +34,7 @@ Here's a demonstration of the result of the above script in Newsboat.
 
 
 ## Install
-A binary built for Mac OS X is available on the [releases][3] page. Download the
+A binary built for Mac OS X is available on the [releases][2] page. Download the
 binary and put it in your `PATH`.
 
 To compile from source:
@@ -52,5 +53,4 @@ COPYING file).
 
 
 [1]: https://www.meetup.com/
-[2]: TODO
-[3]: https://github.com/teddywing/meetup-find-events-rss/releases
+[2]: https://github.com/teddywing/meetup-find-events-rss/releases
