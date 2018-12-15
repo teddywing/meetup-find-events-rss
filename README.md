@@ -30,7 +30,7 @@ Here's a demonstration of the result of the above script in Newsboat.
 
 	echo "file://$HOME/meetup-upcoming.xml" >> ~/.newsboat/urls
 
-[TODO demo gif]
+![Screencast](./Demo.gif)
 
 
 ## Install
